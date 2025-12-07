@@ -1,111 +1,131 @@
 <!doctype html>
-<html lang="en">
+<html lang="ar" dir="rtl">
 
 <head>
-	<title>Huawei password utility</title>
-	<link href="css/style.css" rel="stylesheet">
-	<meta charset="UTF-8">
-	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<script src="js/constants.js"></script> 
-	<script src="https://cdnjs.cloudflare.com/ajax/libs/he/1.2.0/he.min.js" integrity="sha512-PEsccDx9jqX6Dh4wZDCnWMaIO3gAaU0j46W//sSqQhUQxky6/eHZyeB3NrXD2xsyugAKd4KPiDANkcuoEa2JuA==" crossorigin="anonymous"></script>
+    <meta charset="UTF-8">
+    <title>أداة تشفير وفك تشفير إعدادات هواوي</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
 
+    <!-- Modern Flat UI Styles -->
+    <link href="css/style.css" rel="stylesheet">
+
+    <script src="js/constants.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/he/1.2.0/he.min.js" integrity="sha512-PEsccDx9jqX6Dh4wZDCnWMaIO3gAaU0j46W//sSqQhUQxky6/eHZyeB3NrXD2xsyugAKd4KPiDANkcuoEa2JuA==" crossorigin="anonymous"></script>
 </head>
 
 <body>
-	<noscript>
-		<h1>Huawei password utility</h1>
-		<h2>This page performs all computations on the browser and thus required javascript to be enabled.</h2>
-	</noscript>
-	<header class="header-list">
-		<ul>
-			<li><a href="#home" id="homelink">Home</a></li>
-			<li><a href="#passgen" id="passgenlink">Password generator</a></li>
-			<li><a href="#cipher" id="cipherlink">Cipher/Decipher</a></li>
-		</ul>
-	</header>
-	<main>
-		<div id="home">
-			<h1 class="content">About</h1>
-			<div class="divider"></div>
-			<div class="content">
-				<p>
-					This is a simple web page by <a href="https://blog.fayaru.me">Fayaru</a> with a couple of utility functions for Huawei routers. 
-					Currently it supports hashing passwords with several pass modes aswell as encrypting "password" strings in the configuration file.
-				</p>
-				<p>
-					If you wish to know more about this page you can read my writeup <a href="https://blog.fayaru.me/posts/huawei_router_config/">here</a> or check out the GitHub <a href="https://github.com/andreluis034/huawei-utility-page"> repository</a>. 
-					Any changes or improvements to the page are welcome.
-				</p>
-			</div>
-		</div>
-		<div id="passgen" style="display: none;">
-			<h1 class="content">Password generator</h1>
-			<div class="divider"></div>
-			<div class="content">
-				<div class="input-description">
-					Password to hash:
-					<input id="PasswordField" class="user-input" placeholder="password" type="text" oninput="OnPasswordChange()" value>
-				</div>
-				<div class="input-description">
-					EncryptMode:
-					<select id="EncryptionMode" name="hashing" class="user-input" onchange="EncryptionModeChange()">
-						<option value="1">1. MD5(password)</option>
-						<option value="2">2. Sha256(MD5(password))</option>
-						<option value="3">3. PBKDF2(password, 256 key size, 5000 iterations, Sha256, salt)</option>
-					</select>
-				</div>
-				<div class="input-description">
-					Salt:
-					<div style="display: flex">
-						<div style="flex-grow: 1;">
-							<input id="SaltField" class="user-input" placeholder="salt" type="text" oninput="OnPasswordChange()" value>
-						</div>
-						<div class="user-input-checkbox" style="width: 6.8em;">
-							Randomize:
-							<input type="checkbox"  id="SaltRandomizeField" onclick="OnRandomizeFieldChange()"checked>
-						</div>
-					</div>
-				</div>
-				<div class="input-description">
-					Result:
-					<div style="display: flex">
-						<div style="flex-grow: 1;">
-							<input id="ResultField" class="user-input no-input" placeholder="result" type="text" value disabled>
-						</div>
-						<div class="user-input-checkbox"  style="width: 5.1em;" >
-							Encrypt:
-							<input type="checkbox" id="EncryptResultField" onclick="OnEncryptResultClick()"checked>
-						</div>
-					</div>
-				</div>
-			</div>
-		</div>
-		<div id="cipher" style="display: none;">
-			<div class=>
 
-			</div>
-			<h1 class="content">Cipher Decipher</h1>
-			<div class="divider"></div>
-			<div class="content">
-				<p class="input-description"> In this page you can cipher and decipher strings with the same method as Huawei uses in their configuration</p>
-				<div class="input-description">
-					Input:
-					<input id="CipherInputField" class="user-input" placeholder="input" type="text" oninput="OnCipherInputChange()" value>
-				</div>
-				<div class="input-description">
-					Function:
-					<select id="CipherFunctionField" name="cipherfunction" class="user-input" onchange="OnCipherInputChange()">
-						<option value="1">Decipher</option>
-						<option value="2">Cipher</option>
-					</select>
-				</div>
-				<div class="input-description">
-					Result:
-					<input id="CipherResultField" class="user-input no-input" placeholder="result" type="text" value disabled>
-				</div>
-			</div>
-		</div>
-	</main>
-	<script src="js/index.js"></script> 
+    <header class="header-list">
+        <ul>
+            <li><a href="#home" id="homelink">الرئيسية</a></li>
+            <li><a href="#passgen" id="passgenlink">توليد كلمات المرور</a></li>
+            <li><a href="#cipher" id="cipherlink">تشفير / فك التشفير</a></li>
+        </ul>
+    </header>
+
+    <main>
+        <!-- الصفحة الرئيسية -->
+        <div id="home">
+            <h1 class="content">حول الأداة</h1>
+            <div class="divider"></div>
+            <div class="content">
+                <p>
+                    هذه صفحة تجريبية تحتوي على مجموعة من الأدوات الخاصة بتحليل وتشفير إعدادات أجهزة هواوي المنزلية.
+                    تعمل جميع العمليات داخل متصفحك دون إرسال أي بيانات إلى أي خادم خارجي.
+                </p>
+                <p>
+                    تم تطوير هذه النسخة لأغراض تعليمية فقط وللمساعدة في فهم كيفية تعامل أجهزة المودم مع كلمات المرور
+                    وحقول التشفير داخل ملفات الإعدادات.
+                </p>
+            </div>
+
+            <div class="disclaimer-box">
+                <h3>تنبيه / Disclaimer</h3>
+                <p>
+                    هذه الأداة مخصصة للأغراض التعليمية والتحليلية فقط.
+                    أي استخدام غير قانوني أو مخالف لشروط مزود الخدمة هو مسؤولية المستخدم وحده.
+                    مطور النسخة الحالية لا يتحمل أي مسؤولية عن سوء الاستخدام.
+                </p>
+            </div>
+        </div>
+
+        <!-- صفحة توليد كلمات المرور -->
+        <div id="passgen" style="display: none;">
+            <h1 class="content">توليد كلمات المرور</h1>
+            <div class="divider"></div>
+
+            <div class="content">
+
+                <div class="input-description">
+                    كلمة المرور:
+                    <input id="PasswordField" class="user-input" placeholder="اكتب كلمة المرور" type="text" oninput="OnPasswordChange()">
+                </div>
+
+                <div class="input-description">
+                    وضع التشفير:
+                    <select id="EncryptionMode" class="user-input" onchange="EncryptionModeChange()">
+                        <option value="1">MD5</option>
+                        <option value="2">SHA256 + MD5</option>
+                        <option value="3">PBKDF2 (Iterations: 5000)</option>
+                    </select>
+                </div>
+
+                <div class="input-description">
+                    الملح (Salt):
+                    <div style="display:flex">
+                        <input id="SaltField" class="user-input" placeholder="salt">
+                        <label class="user-input-checkbox">
+                            عشوائي
+                            <input type="checkbox" id="SaltRandomizeField" onclick="OnRandomizeFieldChange()" checked>
+                        </label>
+                    </div>
+                </div>
+
+                <div class="input-description">
+                    النتيجة:
+                    <div style="display:flex">
+                        <input id="ResultField" class="user-input no-input" placeholder="النتيجة" disabled>
+                        <label class="user-input-checkbox">
+                            تشفير
+                            <input type="checkbox" id="EncryptResultField" onclick="OnEncryptResultClick()" checked>
+                        </label>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- صفحة التشفير وفك التشفير -->
+        <div id="cipher" style="display:none;">
+            <h1 class="content">تشفير / فك التشفير</h1>
+            <div class="divider"></div>
+
+            <div class="content">
+                <p class="input-description">يمكنك هنا تشفير أو فك تشفير النصوص بالطريقة التي تستخدمها أجهزة هواوي في ملفات الإعدادات.</p>
+
+                <div class="input-description">
+                    الإدخال:
+                    <input id="CipherInputField" class="user-input" placeholder="النص" oninput="OnCipherInputChange()">
+                </div>
+
+                <div class="input-description">
+                    العملية:
+                    <select id="CipherFunctionField" class="user-input" onchange="OnCipherInputChange()">
+                        <option value="1">فك التشفير</option>
+                        <option value="2">التشفير</option>
+                    </select>
+                </div>
+
+                <div class="input-description">
+                    النتيجة:
+                    <input id="CipherResultField" class="user-input no-input" placeholder="النتيجة" disabled>
+                </div>
+            </div>
+        </div>
+
+    </main>
+
+    <script src="js/index.js"></script>
+
+</body>
 
 </html>
