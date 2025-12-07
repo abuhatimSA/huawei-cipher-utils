@@ -1,45 +1,53 @@
 # router-config-utils  
-*(Based on the original **huawei-utility-page** by andreluis034 – GPL-3.0 licensed)*  
+*(Based on the original work by **Fayaru** — GPL-3.0 licensed)*  
 
-This project is a client-side utility toolkit designed to experiment with router configuration encoding, decoding, and password hashing routines.  
-It aims to provide a simple and accessible interface for learning how certain configuration fields behave inside Huawei router backup files.
+This project is a client-side utility toolkit designed to experiment with router configuration  
+encoding, decoding, and password hashing routines. It provides an accessible interface for  
+learning how certain encrypted or hashed fields behave inside Huawei router backup files.
 
-All operations run locally in the browser with no data sent to external servers.
+All operations are performed locally in the browser with no data sent to external servers.
 
 ---
 
-## 🔧 Features
+## 🌐 Live Demo  
+Your customized version is available here:  
+**https://abuhatimsa.github.io/huawei-cipher-utils/**
+
+---
+
+## 🔧 Features  
 - Multiple password hashing modes  
 - Encode/Decode of configuration “password” strings  
 - Fully client-side (HTML + JavaScript)  
 - Works offline  
-- Lightweight and easy to modify  
+- Lightweight and easy to extend  
 
 ---
 
-## 📚 Original Project  
-This repository is based on:  
-**huawei-utility-page** by *andreluis034*  
-GitHub: https://github.com/andreluis034/huawei-utility-page  
-Online demo: https://andreluis034.github.io/huawei-utility-page/  
-Write-up: https://blog.fayaru.me/posts/huawei_router_config/
+## 📚 Original Author  
+This project is based on the original concept and logic developed by:  
+**Fayaru**  
+(Referenced as required by the GPL-3.0 license)
 
 ---
 
-## ✨ Modifications in This Version
-- Updated layout and wording  
-- Improved documentation and structure  
-- Personal enhancements for learning and testing  
-- Additional refinements to utility behavior  
+## ✨ Enhancements in This Version  
+- Modernized UI with a clear dark-tech theme  
+- RTL layout and full Arabic interface support (optional)  
+- Adoption of IBM Plex Sans Arabic for improved readability  
+- Improved structure, styling, and usability  
+- Cleaner documentation and reorganized content  
+- Additional refinements for experimentation and educational purposes  
 
 ---
 
-## ⚠️ Disclaimer
-This tool is intended for educational and analytical purposes only.  
-You are responsible for any use of this software and ensuring compliance with local laws and device terms of service.
+## ⚠️ Disclaimer  
+This tool is intended strictly for educational and analytical purposes.  
+Any misuse or violation of device terms, service agreements, or local regulations  
+is solely the responsibility of the user.
 
 ---
 
 ## 📄 License  
-This project remains under the **GNU General Public License v3.0 (GPL-3.0)**, in accordance with the original license.
-
+This project remains under the **GNU General Public License v3.0 (GPL-3.0)**  
+in compliance with the original licensing requirements.
