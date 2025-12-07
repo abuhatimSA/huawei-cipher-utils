@@ -9,6 +9,7 @@
     <!-- Modern Flat UI Styles -->
     <link href="css/style.css" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+Arabic:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
 
     <script src="js/constants.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/he/1.2.0/he.min.js" integrity="sha512-PEsccDx9jqX6Dh4wZDCnWMaIO3gAaU0j46W//sSqQhUQxky6/eHZyeB3NrXD2xsyugAKd4KPiDANkcuoEa2JuA==" crossorigin="anonymous"></script>
@@ -115,11 +116,17 @@
                         <option value="2">التشفير</option>
                     </select>
                 </div>
-
                 <div class="input-description">
-                    النتيجة:
-                    <input id="CipherResultField" class="user-input no-input" placeholder="النتيجة" disabled>
-                </div>
+    النتيجة:
+    <div class="copy-wrapper">
+        <input id="CipherResultField" class="user-input no-input" placeholder="النتيجة" disabled>
+
+        <i class="fa-regular fa-copy copy-btn" onclick="CopyCipherResult()"></i>
+    </div>
+
+    <span id="CopySuccessMessage" class="copy-success">تم النسخ ✓</span>
+</div>
+                
             </div>
         </div>
 
