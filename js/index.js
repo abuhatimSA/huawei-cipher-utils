@@ -214,5 +214,20 @@ function popStateEvent(e)
 
 }
 
+function CopyCipherResult() {
+    const resultField = document.getElementById("CipherResultField");
+    const successMessage = document.getElementById("CopySuccessMessage");
+
+    if (!resultField.value) return;
+
+    navigator.clipboard.writeText(resultField.value).then(() => {
+        successMessage.style.display = "inline";
+
+        setTimeout(() => {
+            successMessage.style.display = "none";
+        }, 1500);
+    });
+}
+
 window.addEventListener('popstate', popStateEvent);
 popStateEvent();
