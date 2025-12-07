@@ -8,11 +8,15 @@
 
     <!-- Modern Flat UI Styles -->
     <link href="css/style.css" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+Arabic:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Kufi+Arabic:wght@100..900&display=swap" rel="stylesheet">
 
     <script src="js/constants.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/he/1.2.0/he.min.js" integrity="sha512-PEsccDx9jqX6Dh4wZDCnWMaIO3gAaU0j46W//sSqQhUQxky6/eHZyeB3NrXD2xsyugAKd4KPiDANkcuoEa2JuA==" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/he/1.2.0/he.min.js"
+        integrity="sha512-PEsccDx9jqX6Dh4wZDCnWMaIO3gAaU0j46W//sSqQhUQxky6/eHZyeB3NrXD2xsyugAKd4KPiDANkcuoEa2JuA=="
+        crossorigin="anonymous"></script>
 </head>
 
 <body>
@@ -26,30 +30,31 @@
     </header>
 
     <main>
-        <!-- الصفحة الرئيسية -->
         <div id="home">
             <h1 class="content">حول الأداة</h1>
             <div class="divider"></div>
+
             <div class="content">
                 <p>
-                    هذه صفحة تجريبية تحتوي على مجموعة من الأدوات الخاصة بتحليل وتشفير إعدادات أجهزة هواوي المنزلية.
-                    تعمل جميع العمليات داخل متصفحك دون إرسال أي بيانات إلى أي خادم خارجي.
+                    توفر هذه الصفحة مجموعة من الأدوات البسيطة التي تساعد في فهم طريقة عمل
+                    التشفير ومعالجة كلمات المرور داخل ملفات إعدادات أجهزة هواوي المنزلية.
+                    تعمل جميع العمليات داخل المتصفح فقط، دون إرسال أي بيانات إلى أي خادم خارجي.
                 </p>
-                <p>
-                    تم تطوير هذه النسخة لأغراض تعليمية فقط وللمساعدة في فهم كيفية تعامل أجهزة المودم مع كلمات المرور
-                    وحقول التشفير داخل ملفات الإعدادات.
-                </p>
-            </div>
 
-            <div class="disclaimer-box">
-                <h3>تنبيه / Disclaimer</h3>
                 <p>
-                    هذه الأداة مخصصة للأغراض التعليمية والتحليلية فقط.
-                    أي استخدام غير قانوني أو مخالف لشروط مزود الخدمة هو مسؤولية المستخدم وحده.
-                    مطور النسخة الحالية لا يتحمل أي مسؤولية عن سوء الاستخدام.
+                    إذا رغبت في معرفة المزيد حول آلية التشفير وكيفية تخزين الحقول الحساسة
+                    داخل ملف الإعدادات، يمكنك قراءة التحليل التفصيلي الذي نشرته هنا:
+                    <a href="https://abuhatim.net/huawei-router-config-encryption-analysis/" target="_blank">
+                        تحليل تشفير إعدادات راوترات هواوي
+                    </a>.
+                </p>
+
+                <p>
+                    يسعدني استقبال أي اقتراحات أو تحسينات على هذه الصفحة.
                 </p>
             </div>
         </div>
+
 
         <!-- صفحة توليد كلمات المرور -->
         <div id="passgen" style="display: none;">
@@ -60,7 +65,8 @@
 
                 <div class="input-description">
                     كلمة المرور:
-                    <input id="PasswordField" class="user-input" placeholder="اكتب كلمة المرور" type="text" oninput="OnPasswordChange()">
+                    <input id="PasswordField" class="user-input" placeholder="اكتب كلمة المرور" type="text"
+                        oninput="OnPasswordChange()">
                 </div>
 
                 <div class="input-description">
@@ -74,35 +80,62 @@
 
                 <div class="input-description">
                     الملح (Salt):
-                    <div style="display:flex">
+                    <div style="display:flex; align-items:center; width:100%; gap:10px;">
+
+                        <!-- حقل الإدخال -->
                         <input id="SaltField" class="user-input" placeholder="salt">
-                        <label class="user-input-checkbox">
-                            عشوائي
-                            <input type="checkbox" id="SaltRandomizeField" onclick="OnRandomizeFieldChange()" checked>
-                        </label>
+
+                        <!-- زر العشوائي الاحترافي (معطّل) -->
+                        <div class="toggle-container">
+                            <span>عشوائي</span>
+                            <label class="switch disabled-switch">
+                                <input type="checkbox" id="SaltRandomizeField" checked disabled>
+                                <span class="slider"></span>
+                            </label>
+                        </div>
+
                     </div>
                 </div>
+
 
                 <div class="input-description">
                     النتيجة:
-                    <div style="display:flex">
-                        <input id="ResultField" class="user-input no-input" placeholder="النتيجة" disabled>
-                        <label class="user-input-checkbox">
-                            تشفير
-                            <input type="checkbox" id="EncryptResultField" onclick="OnEncryptResultClick()" checked>
-                        </label>
+                    <div style="display:flex; align-items:center; width:100%;">
+
+                        <!-- الحقل + زر النسخ -->
+                        <div class="copy-wrapper" style="flex-grow:1;">
+                            <input id="ResultField" class="user-input no-input" placeholder="النتيجة" disabled>
+
+                            <!-- أيقونة النسخ داخل الحقل -->
+                            <i class="fa-regular fa-copy copy-btn" onclick="CopyPasswordResult()"></i>
+                        </div>
+
+                        <!-- زر التشفير الاحترافي -->
+                        <div class="toggle-container">
+                            <span>تشفير</span>
+                            <label class="switch">
+                                <input type="checkbox" id="EncryptResultField" onclick="OnEncryptResultClick()" checked>
+                                <span class="slider"></span>
+                            </label>
+                        </div>
+
                     </div>
+
+                    <span id="CopyPasswordSuccess" class="copy-success">تم النسخ ✓</span>
                 </div>
+
             </div>
         </div>
+        </div>
 
-        <!-- صفحة التشفير وفك التشفير -->
+
         <div id="cipher" style="display:none;">
             <h1 class="content">تشفير / فك التشفير</h1>
             <div class="divider"></div>
 
             <div class="content">
-                <p class="input-description">يمكنك هنا تشفير أو فك تشفير النصوص بالطريقة التي تستخدمها أجهزة هواوي في ملفات الإعدادات.</p>
+                <p class="input-description">يمكنك هنا تشفير أو فك تشفير النصوص بالطريقة التي تستخدمها أجهزة هواوي في
+                    ملفات الإعدادات.</p>
 
                 <div class="input-description">
                     الإدخال:
@@ -117,16 +150,16 @@
                     </select>
                 </div>
                 <div class="input-description">
-    النتيجة:
-    <div class="copy-wrapper">
-        <input id="CipherResultField" class="user-input no-input" placeholder="النتيجة" disabled>
+                    النتيجة:
+                    <div class="copy-wrapper">
+                        <input id="CipherResultField" class="user-input no-input" placeholder="النتيجة" disabled>
 
-        <i class="fa-regular fa-copy copy-btn" onclick="CopyCipherResult()"></i>
-    </div>
+                        <i class="fa-regular fa-copy copy-btn" onclick="CopyCipherResult()"></i>
+                    </div>
 
-    <span id="CopySuccessMessage" class="copy-success">تم النسخ ✓</span>
-</div>
-                
+                    <span id="CopySuccessMessage" class="copy-success">تم النسخ ✓</span>
+                </div>
+
             </div>
         </div>
 

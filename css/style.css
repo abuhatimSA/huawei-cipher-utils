@@ -4,7 +4,7 @@
 
 body {
     background-color: #0e0f13;
-    font-family: 'IBM Plex Sans Arabic', 'Segoe UI', Tahoma, sans-serif;
+    font-family: 'Noto Kufi Arabic', 'Segoe UI', Tahoma, sans-serif;
     font-size: 1.15rem;
     margin: 0;
     padding: 0;
@@ -25,12 +25,12 @@ main {
 .user-input {
     box-sizing: border-box;
     width: 100%;
-    height: 42px;
+    height: 45px;
     padding: 10px 14px;
     border-radius: 8px;
 
     font-size: 15px;
-    font-family: 'IBM Plex Sans Arabic', sans-serif;
+    font-family: 'Noto Kufi Arabic', sans-serif;
 
     color: #ffffff;
     background-color: #1b1d24;
@@ -64,7 +64,7 @@ main {
     align-items: center;
     gap: 6px;
     font-size: 0.9rem;
-    font-family: 'IBM Plex Sans Arabic', sans-serif;
+    font-family: 'Noto Kufi Arabic', sans-serif;
     color: #bfc3cc;
 }
 
@@ -80,13 +80,13 @@ input[type=checkbox] {
 .input-description {
     color: #bfc3cc;
     margin-bottom: 0.6em;
-    font-family: 'IBM Plex Sans Arabic', sans-serif;
+    font-family: 'Noto Kufi Arabic', sans-serif;
 }
 
 .content {
     width: 97%;
     margin: 0 auto;
-    font-family: 'IBM Plex Sans Arabic', sans-serif;
+    font-family: 'Noto Kufi Arabic', sans-serif;
 }
 
 /* ================================
@@ -113,7 +113,7 @@ input[type=checkbox] {
 .header-list ul li a {
     display: block;
     text-decoration: none;
-    font-family: 'IBM Plex Sans Arabic', sans-serif;
+    font-family: 'Noto Kufi Arabic', sans-serif;
 
     font-size: 1.15em;
     font-weight: 600;
@@ -167,7 +167,7 @@ main a:hover {
     border-radius: 8px;
     color: #e8e8e8;
     box-shadow: 0 0 8px rgba(255, 202, 101, 0.2);
-    font-family: 'IBM Plex Sans Arabic', sans-serif;
+    font-family: 'Noto Kufi Arabic', sans-serif;
 }
 
 .disclaimer-box h3 {
@@ -197,8 +197,8 @@ main a:hover {
 /* Font Awesome copy icon */
 .copy-btn {
     position: absolute;
-    left: 12px;
-    top: 50%;
+    left: 15px;
+    top: 40%;
     transform: translateY(-50%);
     font-size: 1.2rem;
     color: #9aa0ad;
@@ -217,4 +217,73 @@ main a:hover {
     color: #4ea1ff;
     font-size: 0.9rem;
     margin-top: 6px;
+}
+
+/* Toggle switch container */
+.toggle-container {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin-right: 12px;
+    color: hsla(0,0%,100%,.75);
+    font-size: 0.95em;
+}
+
+/* Switch wrapper */
+.switch {
+    position: relative;
+    display: inline-block;
+    width: 44px;
+    height: 22px;
+}
+
+/* Hide default checkbox */
+.switch input {
+    opacity: 0;
+    width: 0;
+    height: 0;
+}
+
+/* Slider background */
+.slider {
+    position: absolute;
+    cursor: pointer;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: #555;
+    transition: .3s;
+    border-radius: 22px;
+}
+
+/* Slider circle */
+.slider:before {
+    position: absolute;
+    content: "";
+    height: 18px;
+    width: 18px;
+    left: 3px;
+    bottom: 2px;
+    background-color: white;
+    transition: .3s;
+    border-radius: 50%;
+}
+
+/* When checkbox is ON */
+.switch input:checked + .slider {
+    background-color: #4ea1ff;
+}
+
+.switch input:checked + .slider:before {
+    transform: translateX(20px);
+}
+
+.disabled-switch {
+    opacity: 0.4;
+    cursor: not-allowed;
+}
+
+.disabled-switch .slider {
+    cursor: not-allowed !important;
 }

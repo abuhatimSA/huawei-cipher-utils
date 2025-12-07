@@ -229,5 +229,21 @@ function CopyCipherResult() {
     });
 }
 
+function CopyPasswordResult() {
+    const resultField = document.getElementById("ResultField");
+    const successMessage = document.getElementById("CopyPasswordSuccess");
+
+    if (!resultField.value) return;
+
+    navigator.clipboard.writeText(resultField.value).then(() => {
+        successMessage.style.display = "inline";
+
+        setTimeout(() => {
+            successMessage.style.display = "none";
+        }, 1500);
+    });
+}
+
+
 window.addEventListener('popstate', popStateEvent);
 popStateEvent();

@@ -222,7 +222,6 @@ function HW_AESCBC_Encrypt(data, key, IV)
 		key = toHexString(key);
 	if (IV instanceof Uint8Array)
 		IV = toHexString(IV);
-	//console.log(`HW_AESCBC_Encrypt("${data}", "${key}", "${IV}")`)
 	
 	let result = CryptoJS.AES.encrypt(data, CryptoJS.enc.Hex.parse(key), {
 		iv:	CryptoJS.enc.Hex.parse(IV),
@@ -231,7 +230,7 @@ function HW_AESCBC_Encrypt(data, key, IV)
 		padding: CryptoJS.pad.ZeroPadding
 	});
 	let hexEncrypted = result.toString();
-	let binaryData = new Uint8Array(hexEncrypted.length / 2 + IV.length/2); // Buffer.alloc(hexEncrypted.length / 2 + IV.length);//  Buffer.from(result.toString(), "hex");
+	let binaryData = new Uint8Array(hexEncrypted.length / 2 + IV.length/2);
 	binaryData.set(fromHexString(hexEncrypted), 0);
 	binaryData.set(fromHexString(IV), hexEncrypted.length / 2);
 	return `$2${HW_AES_AscVisible(HW_AES_BinToPlain(binaryData))}$`;
@@ -274,7 +273,7 @@ function GetRandomByteArray(size)
 	{
 		randomBytes[i] = (Math.random()*255) >> 0	
 	}
-	return randomBytes;// randomBytes.reduce((previous, currentValue) => {return previous + currentValue.toString(16)});
+	return randomBytes;
 }
 
 onmessage = function(e) 
@@ -295,14 +294,9 @@ onmessage = function(e)
 			returnedData.field = e.data.args.field;
 			break;
 		case DECRYPT_DATA:
-			returnedData.return = HW_AESCBC_Decrypt(e.data.args.password, PASSWORD_HEX);// HW_AESCBC_Encrypt(e.data.args.password, PASSWORD_HEX, GetRandomByteArray(0x10));
+			returnedData.return = HW_AESCBC_Decrypt(e.data.args.password, PASSWORD_HEX);
 			returnedData.field = e.data.args.field;
 			break;
 	}
 	postMessage(returnedData);
 }
-
-
-
-
-//console.log(HW_AESCBC_Decrypt(_.unescape("$2QRTqKHqFz&lt;}*+cVC#oI,5~081XX~w5\\T*cPo5IY&amp;TO+q0_1;p!u.[&amp;AV$ki5$"), PASSWORD_HEX));
