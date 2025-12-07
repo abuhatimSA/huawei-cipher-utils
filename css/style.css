@@ -187,3 +187,34 @@ main a:hover {
         width: 100%;
     }
 }
+
+/* Wrapper for input + copy icon */
+.copy-wrapper {
+    position: relative;
+    width: 100%;
+}
+
+/* Font Awesome copy icon */
+.copy-btn {
+    position: absolute;
+    left: 12px;
+    top: 50%;
+    transform: translateY(-50%);
+    font-size: 1.2rem;
+    color: #9aa0ad;
+    cursor: pointer;
+    transition: 0.25s ease;
+}
+
+.copy-btn:hover {
+    color: #4ea1ff;
+    transform: translateY(-50%) scale(1.15);
+}
+
+/* Success message */
+.copy-success {
+    display: none;
+    color: #4ea1ff;
+    font-size: 0.9rem;
+    margin-top: 6px;
+}
